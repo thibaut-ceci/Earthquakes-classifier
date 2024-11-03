@@ -1,0 +1,74 @@
+time,latitude,longitude,depth,mag,magType,nst,gap,dmin,rms,net,id,updated,place,type,horizontalError,depthError,magError,magNst,status,locationSource,magSource
+2023-09-15T08:00:48.677Z,15.5466,145.5517,10,4.8,mb,33,112,0.388,0.73,us,us7000kwxj,2023-11-18T22:29:31.040Z,"42 km NNW of Saipan, Northern Mariana Islands",volcanic eruption,7.33,1.924,0.109,26,reviewed,us,us
+2023-09-15T07:32:33.601Z,15.6131,145.8842,9.44,4.5,mb,19,82,0.387,0.52,us,us7000kwx6,2023-11-18T22:29:31.040Z,"46 km NNE of Saipan, Northern Mariana Islands",volcanic eruption,7.04,5.482,0.15,13,reviewed,us,us
+2023-09-15T07:28:50.217Z,15.4575,145.7466,10.405,4.5,mb,19,121,0.227,0.64,us,us7000kwx4,2023-11-18T22:29:31.040Z,"27 km N of Saipan, Northern Mariana Islands",volcanic eruption,8.04,5.018,0.171,13,reviewed,us,us
+2023-09-15T07:25:40.633Z,15.4528,145.957,10.289,4.4,mb,19,120,2.132,0.73,us,us7000kwx5,2023-11-18T22:29:31.040Z,"34 km NE of Saipan, Northern Mariana Islands",volcanic eruption,5.8,5.072,0.149,13,reviewed,us,us
+2023-09-15T06:22:28.475Z,15.5257,145.6122,8.736,4.6,mb,23,120,0.338,0.66,us,us7000kwx1,2023-11-18T22:29:31.040Z,"37 km NNW of Saipan, Northern Mariana Islands",volcanic eruption,6.76,5.48,0.141,15,reviewed,us,us
+2023-09-15T06:19:55.523Z,15.5082,145.5699,9.966,4.6,mb,15,95,2.025,0.43,us,us7000kwx0,2023-11-18T22:29:31.040Z,"38 km NNW of Saipan, Northern Mariana Islands",volcanic eruption,10.24,6.236,0.173,10,reviewed,us,us
+2023-09-15T04:28:47.562Z,15.454,145.7736,9.921,4.7,mb,25,152,2.051,0.99,us,us7000kwwy,2023-11-18T22:29:31.040Z,"26 km N of Saipan, Northern Mariana Islands",volcanic eruption,15.23,5.211,0.102,30,reviewed,us,us
+2023-09-15T04:26:47.195Z,15.4943,145.8433,4.874,4.7,mb,56,139,0.264,0.51,us,us7000kvwe,2023-11-18T22:29:30.040Z,"32 km NNE of Saipan, Northern Mariana Islands",volcanic eruption,11.44,4.621,0.085,42,reviewed,us,us
+2023-09-15T04:26:31.134Z,15.4105,145.4988,10,4.2,mb,13,102,0.332,0.6,us,us7000kwxw,2023-11-18T22:29:31.040Z,"35 km NW of Saipan, Northern Mariana Islands",volcanic eruption,6.4,1.9,0.167,11,reviewed,us,us
+2023-09-14T15:48:26.701Z,15.4692,146.1768,10,4.5,mb,13,194,0.439,0.78,us,us7000kwp6,2023-11-18T22:29:31.040Z,"53 km ENE of Saipan, Northern Mariana Islands",volcanic eruption,5.96,1.914,0.272,4,reviewed,us,us
+2022-01-15T04:14:45.000Z,-20.546,-175.39,0,5.8,ms_20,,,,2.82,us,us7000gc8r,2022-11-15T02:42:10.861Z,"68 km NNW of Nuku‘alofa, Tonga",volcanic eruption,8.1,6,0.021,507,reviewed,us,us
+2018-08-02T21:55:12.060Z,19.4111667,-155.2831667,0.55,5.3,mw,34,27,0.006521,0.1,hv,hv70513677,2022-05-03T19:25:25.243Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.14,0.11,,22,reviewed,hv,hv
+2018-07-31T17:59:46.000Z,19.4103333,-155.2856667,0.57,5.3,mw,36,23,0.007439,0.12,hv,hv70503837,2022-05-03T19:25:07.031Z,"6 km WSW of Volcano, Hawaii",volcanic eruption,0.16,0.11,,9,reviewed,hv,hv
+2018-07-29T22:10:25.570Z,19.4063333,-155.2823333,1.29,5.3,mw,39,24,0.01139,0.12,hv,hv70495012,2018-11-01T01:31:30.280Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.16,0.12,,22,reviewed,hv,hv
+2018-07-28T12:37:25.390Z,19.3968333,-155.2718333,0.21,5.3,mw,37,40,0.002246,0.1,hv,hv70488497,2022-05-03T19:25:00.878Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.1,0.1,,21,reviewed,hv,hv
+2018-07-26T22:09:11.280Z,19.3976667,-155.2693333,0.18,5.3,mw,38,49,0.003168,0.13,hv,hv70481092,2022-05-03T19:24:52.979Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.16,0.1,,20,reviewed,hv,hv
+2018-07-24T16:41:10.140Z,19.4141667,-155.2821667,0.45,5.3,mw,36,35,0.003925,0.14,hv,hv70470502,2022-05-03T19:24:43.529Z,"5 km WSW of Volcano, Hawaii",volcanic eruption,0.14,0.1,,14,reviewed,hv,hv
+2018-07-23T06:53:38.820Z,19.4101667,-155.2833333,0.54,5.3,mw,35,26,0.007491,0.09,hv,hv70463607,2022-05-03T19:24:30.659Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.12,0.09,,27,reviewed,hv,hv
+2018-07-21T19:43:28.660Z,19.4018333,-155.288,0.07,5.3,mw,37,34,0.01229,0.12,hv,hv70456682,2022-05-03T19:23:59.760Z,"7 km SW of Volcano, Hawaii",volcanic eruption,0.12,0.15,,21,reviewed,hv,hv
+2018-07-20T02:33:01.690Z,19.4103333,-155.2816667,0.85,5.3,mw,33,27,0.007643,0.11,hv,hv70448162,2022-05-03T19:23:07.292Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.11,0.08,,47,reviewed,hv,hv
+2018-07-18T11:28:04.040Z,19.3961667,-155.2748333,0.37,5.3,mw,38,41,0.001376,0.13,hv,hv70440367,2018-11-07T21:56:20.950Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.15,0.11,,79,reviewed,hv,hv
+2018-07-16T21:42:35.500Z,19.3995,-155.2775,0.24,5.3,mw,31,39,0.005491,0.1,hv,hv70432927,2022-05-03T19:22:38.499Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.12,0.12,,22,reviewed,hv,hv
+2018-07-15T13:26:05.130Z,19.4036667,-155.2901667,1.35,5.3,mw,20,46,0.009741,0.15,hv,hv70426597,2022-05-03T19:22:29.028Z,"7 km SW of Volcano, Hawaii",volcanic eruption,0.24,0.25,,16,reviewed,hv,hv
+2018-07-14T05:08:03.680Z,19.3995,-155.2768333,-0.21,5.3,mw,23,45,0.005095,0.15,hv,hv70419872,2022-05-03T19:22:15.749Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.12,0.13,,17,reviewed,hv,hv
+2018-07-13T00:42:27.110Z,19.3993333,-155.2766667,0.27,5.3,mw,36,39,0.004869,0.11,hv,hv70414347,2022-05-03T19:21:59.939Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.11,0.09,,33,reviewed,hv,hv
+2018-07-11T15:45:53.220Z,19.3993333,-155.2886667,-0.5,5.3,mw,33,38,0.01056,0.19,hv,hv70398031,2022-05-03T19:21:58.827Z,"7 km SW of Volcano, Hawaii",volcanic eruption,0.12,0.16,,6,reviewed,hv,hv
+2018-07-09T19:20:46.280Z,19.4001667,-155.2896667,-0.47,5.3,mw,39,39,0.0109,0.14,hv,hv70388861,2018-10-02T16:40:31.040Z,"7 km SW of Volcano, Hawaii",volcanic eruption,0.11,0.16,,7,reviewed,hv,hv
+2018-07-08T12:54:50.330Z,19.402,-155.2911667,-1.01,5.3,mw,34,42,0.009526,0.17,hv,hv70382556,2018-11-17T01:58:09.270Z,"7 km SW of Volcano, Hawaii",volcanic eruption,0.14,0.17,,20,reviewed,hv,hv
+2018-07-07T04:04:37.630Z,19.4026667,-155.2895,0.23,5.3,mw,36,38,0.01067,0.14,hv,hv70375466,2022-05-03T19:21:18.383Z,"7 km SW of Volcano, Hawaii",volcanic eruption,0.16,0.16,,23,reviewed,hv,hv
+2018-07-05T23:20:04.690Z,19.4108333,-155.2828333,0.46,5.2,mw,30,50,0.006897,0.08,hv,hv70370031,2022-05-03T19:21:06.567Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.12,0.12,,8,reviewed,hv,hv
+2018-07-04T20:19:10.470Z,19.398,-155.2716667,0.41,5.3,mw,38,43,0.003215,0.1,hv,hv70364281,2022-05-03T19:20:51.921Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.13,0.12,,8,reviewed,hv,hv
+2018-07-03T12:17:03.810Z,19.416,-155.2746667,-0.12,5.3,mw,24,32,0.009053,0.13,hv,hv70357811,2018-09-27T14:03:36.040Z,"5 km SW of Volcano, Hawaii",volcanic eruption,0.12,0.22,,8,reviewed,hv,hv
+2018-07-02T11:24:46.190Z,19.4031667,-155.2926667,-0.36,5.3,mw,21,67,0.007733,0.17,hv,hv70352881,2021-07-15T14:49:09.004Z,"7 km SW of Volcano, Hawaii",volcanic eruption,0.14,0.18,,80,reviewed,hv,hv
+2018-07-01T00:51:13.010Z,19.412,-155.2815,0.3,5.3,mw,36,30,0.006143,0.1,hv,hv70345951,2018-09-21T16:25:54.040Z,"Island of Hawaii, Hawaii",volcanic eruption,0.12,0.11,,23,reviewed,hv,hv
+2018-06-29T17:50:46.270Z,19.4136667,-155.2805,0.25,5.2,mw,35,46,0.005227,0.12,hv,hv70339416,2018-09-21T16:25:53.040Z,"5 km WSW of Volcano, Hawaii",volcanic eruption,0.13,0.1,,17,reviewed,hv,hv
+2018-06-28T14:48:50.400Z,19.4126667,-155.2858333,0.23,5.3,mw,35,25,0.005232,0.15,hv,hv70333906,2022-05-03T19:20:17.568Z,"6 km WSW of Volcano, Hawaii",volcanic eruption,0.13,0.1,,28,reviewed,hv,hv
+2018-06-27T08:40:40.310Z,19.4105,-155.28,0.53,5.3,mw,37,33,0.008106,0.1,hv,hv70327791,2022-05-03T19:20:16.085Z,"Island of Hawaii, Hawaii",volcanic eruption,0.13,0.1,,5,reviewed,hv,hv
+2018-06-26T03:02:44.720Z,19.4115,-155.283,0.72,5.2,mw,38,24,0.006217,0.1,hv,hv70321551,2022-05-03T19:20:10.010Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.14,0.1,,47,reviewed,hv,hv
+2018-06-25T02:12:24.200Z,19.411,-155.2833333,0.82,5.2,mw,37,25,0.006666,0.11,hv,hv70316456,2022-05-03T19:20:07.071Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.14,0.11,,47,reviewed,hv,hv
+2018-06-24T02:34:36.270Z,19.4116667,-155.285,0.03,5.2,mw,38,25,0.006025,0.13,hv,hv70311776,2018-09-19T15:15:57.040Z,"6 km WSW of Volcano, Hawaii",volcanic eruption,0.13,0.14,,24,reviewed,hv,hv
+2018-06-23T04:52:16.210Z,19.3983333,-155.2726667,0.28,5.3,mw,39,41,0.00309,0.11,hv,hv70307431,2018-09-19T15:15:56.040Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.13,0.11,,23,reviewed,hv,hv
+2018-06-21T23:12:59.370Z,19.4115,-155.2833333,0.46,5.4,mw,38,24,0.006172,0.09,hv,hv70301461,2022-05-03T19:19:52.829Z,"6 km WSW of Volcano, Hawaii",volcanic eruption,0.12,0.09,,9,reviewed,hv,hv
+2018-06-20T14:22:23.430Z,19.4143333,-155.2861667,-0.02,5.3,mw,33,30,0.003845,0.12,hv,hv70294636,2022-05-03T19:19:48.053Z,"6 km WSW of Volcano, Hawaii",volcanic eruption,0.14,0.12,,29,reviewed,hv,hv
+2018-06-19T15:05:34.000Z,19.4106667,-155.2816667,0.49,5.3,mw,38,27,0.007327,0.09,hv,hv70289831,2022-05-03T19:19:46.451Z,"Island of Hawaii, Hawaii",volcanic eruption,0.14,0.1,,22,reviewed,hv,hv
+2018-06-18T16:12:48.500Z,19.4113333,-155.2835,0.33,5.3,mw,35,27,0.006321,0.09,hv,hv70285321,2022-05-03T19:19:44.875Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.11,0.1,,12,reviewed,hv,hv
+2018-06-17T16:26:13.090Z,19.4103333,-155.2813333,0.8,5.3,mw,38,28,0.007743,0.1,hv,hv70280586,2022-05-03T19:19:12.695Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.15,0.12,,7,reviewed,hv,hv
+2018-06-16T20:18:17.660Z,19.412,-155.2858333,0.26,5.3,mw,35,25,0.005866,0.1,hv,hv70276646,2022-05-03T19:54:30.945Z,"6 km WSW of Volcano, Hawaii",volcanic eruption,0.12,0.1,,13,reviewed,hv,hv
+2018-06-15T21:56:39.920Z,19.415,-155.283,0.2,5.3,mw,38,30,0.002843,0.14,hv,hv70272196,2018-09-07T17:47:06.040Z,"5 km WSW of Volcano, Hawaii",volcanic eruption,0.14,0.1,,16,reviewed,hv,hv
+2018-06-14T13:19:37.120Z,19.4136667,-155.282,0.43,5.3,mw,39,33,0.00444,0.13,hv,hv70265441,2022-05-03T19:17:41.761Z,"5 km WSW of Volcano, Hawaii",volcanic eruption,0.14,0.12,,20,reviewed,hv,hv
+2018-06-13T13:39:37.610Z,19.4136667,-155.2816667,0.27,5.3,mw,38,38,0.004589,0.12,hv,hv70260941,2022-05-03T19:17:28.962Z,"5 km WSW of Volcano, Hawaii",volcanic eruption,0.13,0.09,,15,reviewed,hv,hv
+2018-06-12T11:52:51.230Z,19.4115,-155.2825,0.72,5.3,mw,38,25,0.006312,0.1,hv,hv70256021,2022-05-03T19:17:10.862Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.13,0.1,,9,reviewed,hv,hv
+2018-06-11T14:43:54.340Z,19.4113333,-155.2788333,0.54,5.3,mw,38,41,0.00802,0.11,hv,hv70262272,2022-05-03T19:16:56.886Z,"5 km SW of Volcano, Hawaii",volcanic eruption,0.14,0.12,,13,reviewed,hv,hv
+2018-06-10T10:51:01.890Z,19.4105,-155.2808333,0.53,5.3,mw,37,34,0.007762,0.09,hv,hv70257117,2022-05-03T19:16:34.044Z,"Island of Hawaii, Hawaii",volcanic eruption,0.13,0.12,,7,reviewed,hv,hv
+2018-06-09T14:48:18.050Z,19.4135,-155.2826667,0.61,5.2,mw,38,29,0.004355,0.09,hv,hv70253332,2022-05-03T19:16:19.890Z,"6 km WSW of Volcano, Hawaii",volcanic eruption,0.13,0.1,,8,reviewed,hv,hv
+2018-06-08T12:44:39.650Z,19.4138333,-155.2826667,-0.97,5.2,mw,34,39,0.004041,0.17,hv,hv70248327,2018-08-29T16:35:46.040Z,"6 km WSW of Volcano, Hawaii",volcanic eruption,0.12,0.16,,10,reviewed,hv,hv
+2018-06-07T02:06:38.640Z,19.4106667,-155.2816667,0.36,5.4,mw,33,27,0.007327,0.11,hv,hv70241807,2018-08-29T16:34:57.040Z,"Island of Hawaii, Hawaii",volcanic eruption,0.18,0.11,,18,reviewed,hv,hv
+2018-06-05T14:32:34.450Z,19.4008333,-155.286,-0.83,5.4,mw,28,29,0.01479,0.23,hv,hv70235442,2021-02-19T17:06:34.521Z,"7 km SW of Volcano, Hawaii",volcanic eruption,0.16,0.24,,14,reviewed,hv,hv
+2018-06-04T01:50:48.690Z,19.4105,-155.2825,0.58,5.4,mw,35,26,0.007282,0.1,hv,hv70228857,2022-05-03T19:15:55.444Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.13,0.1,,14,reviewed,hv,hv
+2018-06-01T23:37:15.150Z,19.4003333,-155.2795,0.53,5.4,mw,36,33,0.007414,0.09,hv,hv70219637,2022-05-03T19:15:01.322Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.13,0.1,,19,reviewed,hv,hv
+2018-05-30T20:53:50.830Z,19.4113333,-155.2851667,-0.07,5.4,mw,35,28,0.006376,0.13,hv,hv70210622,2018-08-28T16:28:58.040Z,"6 km WSW of Volcano, Hawaii",volcanic eruption,0.14,0.16,,7,reviewed,hv,hv
+2018-05-29T11:56:11.570Z,19.4123333,-155.2828333,-0.27,5.3,mw,38,27,0.005433,0.12,hv,hv70204492,2018-08-28T16:28:21.040Z,"6 km WSW of Volcano, Hawaii",volcanic eruption,0.12,0.11,,11,reviewed,hv,hv
+2018-05-26T19:34:41.160Z,19.4035,-155.2751667,0.26,4.7,mw,21,55,0.008216,0.12,hv,hv70194587,2018-08-21T21:23:53.040Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.16,0.13,,5,reviewed,hv,hv
+2018-05-26T10:44:37.620Z,19.4045,-155.278,0.19,4.8,mw,20,57,0.009972,0.23,hv,hv70193362,2018-08-21T21:23:53.040Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.19,0.22,,6,reviewed,hv,hv
+2018-05-26T02:15:52.250Z,19.4085,-155.2753333,0.43,5.1,mw,16,78,0.01231,0.12,hv,hv70195287,2018-08-21T21:23:52.040Z,"5 km SW of Volcano, Hawaii",volcanic eruption,0.19,0.19,,6,reviewed,hv,hv
+2018-05-24T04:43:49.890Z,19.405,-155.281,0.01,4.9,mw,12,77,0.01183,0.11,hv,hv70186227,2018-08-21T21:23:49.040Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.27,31.61,,6,reviewed,hv,hv
+2018-05-23T07:58:46.290Z,19.405,-155.281,0.01,4.9,mw,13,109,0.006997,0.18,hv,hv70186707,2018-08-21T21:23:48.040Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.42,31.61,,6,reviewed,hv,hv
+2018-05-22T03:51:11.860Z,19.405,-155.281,0.01,4.9,mw,14,109,0.006997,0.22,hv,hv70180197,2022-08-08T04:12:01.715Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.42,31.61,,6,reviewed,hv,hv
+2018-05-21T10:55:19.180Z,19.405,-155.281,0.01,4.9,mw,14,77,0.006997,0.21,hv,hv70186732,2018-08-21T21:23:48.040Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.4,31.61,,5,reviewed,hv,hv
+2018-05-20T21:50:07.310Z,19.405,-155.281,0.01,4.9,mw,13,109,0.006997,0.09,hv,hv70167521,2018-08-15T19:47:00.040Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.34,31.61,,5,reviewed,hv,hv
+2018-05-20T01:58:13.320Z,19.405,-155.281,0.01,4.9,mw,19,71,0.006997,0.21,hv,hv70165286,2018-08-15T19:46:59.040Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.32,31.61,,6,reviewed,hv,hv
+2018-05-19T09:58:33.210Z,19.405,-155.281,0.01,5.1,mw,13,56,0.006997,0.38,hv,hv70163146,2018-08-15T19:46:58.040Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.61,31.61,,5,reviewed,hv,hv
+2018-05-17T14:04:10.700Z,19.405,-155.281,0.01,5,mw,13,56,0.006997,0.41,hv,hv70166177,2018-08-15T19:46:55.040Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.62,31.61,,5,reviewed,hv,hv
+2018-05-17T04:15:30.350Z,19.405,-155.281,0.01,5,mw,11,76,0.006997,0.4,hv,hv70164442,2018-08-15T19:46:55.040Z,"6 km SW of Volcano, Hawaii",volcanic eruption,0.72,31.61,,3,reviewed,hv,hv
