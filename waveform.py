@@ -7,7 +7,7 @@ Write by Léonard Seydoux (seydoux@ipgp.fr) and Thibaut Céci (thi.ceci@gmail.co
 from obspy import UTCDateTime, Stream
 from obspy.clients.fdsn import Client
 from obspy.geodetics import locations2degrees
-from tqdm import tqdm
+
 
 ## Connect to the FSDN server, or the IRIS datacenter. Because this variable is defined outside any function, it is visible by all functions of this module.
 client = Client("IRIS")
