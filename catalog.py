@@ -39,7 +39,7 @@ def load(path):
 
 def open_plot(avalanches, pos_number=0.260, xlim=100):
     """
-    Plot the number of avalanches in each column of the ESEC.
+    Plot the number of events in each column of the ESEC.
 
     Parameters :
     ------------
@@ -53,7 +53,7 @@ def open_plot(avalanches, pos_number=0.260, xlim=100):
 
     ## Count the number of non-null values in each column and sort them
     ax = avalanches.count().sort_values().plot(kind="barh", figsize=(6, 10))
-    ax.set_xlabel("Number of avalanches")
+    ax.set_xlabel("Number of events")
     ax.set_xlim(0, xlim)
 
     ## For counting the number of values in each column
@@ -61,7 +61,7 @@ def open_plot(avalanches, pos_number=0.260, xlim=100):
         ax.text(value + 0.1, index - pos_number, str(value))
 
 
-def see_word_distribution(ESEC, pos_number, xlim):
+def see_word_distribution(ESEC, pos_number, xlim, ylim):
     """
     Plots the distribution of word in the ESEC.
 
@@ -82,17 +82,18 @@ def see_word_distribution(ESEC, pos_number, xlim):
 
     ## Plot the distribution
     ax = ESEC_sorted.plot(kind='barh')
-    ax.set_xlabel("Number of avalanches")
+    ax.set_xlabel("Number of events")
     ax.set_yticks(range(len(ESEC_sorted)))
     ax.set_yticklabels(ESEC_sorted.index)
     ax.set_xlim(0, xlim)
+    ax.set_ylim(0, ylim)
 
     ## For counting the number of values in each column
     for index, value in enumerate(ESEC_sorted):
         ax.text(value + 0.1, index - pos_number, str(value))
 
 
-def see_number_distribution(avalanches_select, ax, ylabel):
+def see_number_distribution(avalanches_select, ylabel):
     """
     Plots the distribution of number in the ESEC.
 
@@ -106,30 +107,9 @@ def see_number_distribution(avalanches_select, ax, ylabel):
         The variable being plotted.
     """
 
-    ax.hist(avalanches_select, orientation="horizontal")
-    ax.set_xlabel("Number of avalanches")
-    ax.set_ylabel(ylabel)
+    plt.hist(avalanches_select, orientation="horizontal", bins=30)
+    plt.xlabel("Number of events")
+    plt.ylabel(ylabel)
+    plt.tight_layout()
+    plt.show()
 
-
-def get_the_most_or_least_instrumented_avalanches(catalog, number, ascending=False):
-    """
-    Returns a subset of ESEC sorted by the number of stations.
-
-    Parameters:
-    ------------
-    catalog : pandas.DataFrame
-        The ESEC.
-    number : int
-        The number of avalanches in the catalog to return.
-    ascending : bool
-        If False, sorts the avalanches by 'Number of stations' in descending order to get the most instrumented.
-        If True, sorts the avalanches by 'Number of stations' in ascending order to get the least instrumented.
-
-    Returns:
-    ---------
-    pandas.DataFrame
-        A subset of ESEC containing the 'number' most or least instrumented avalanches.
-    """
-    catalog.sort_values(by="Number of stations", ascending=ascending, inplace=True)
-
-    return catalog.head(number)

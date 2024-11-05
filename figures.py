@@ -260,6 +260,7 @@ def plot_detected_signal(time_start_detection, data_start_detection, trimmed_tim
 
     ax.set_xlabel("Time [s]")
     ax.set_ylabel("Displacement [m]")
+    
     ax.set_xlim(time_raw[0], time_raw[-1])
     ax.legend()
 
