@@ -6,18 +6,14 @@ The detection method is here.
 """
 from tqdm.notebook import tqdm
 
-from datetime import timedelta
-import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import numpy as np
 import obspy
 import pandas as pd
 from scipy.signal import welch
 from sklearn.linear_model import LinearRegression
-from obspy import UTCDateTime, Stream
 
 import computations as cp
-import figures
 
 tqdm.pandas()
 
