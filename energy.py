@@ -189,6 +189,7 @@ def compute(ESEC_avalanches, trace, event_index):
                                     'skewness': [scipy.stats.skew(sub_energy)], 
                                     'area_of_the_energy_parabola': [np.trapz(sub_energy, sub_times)], 
                                     'energy_max': [np.max(sub_energy)], 
-                                    'Impulsion': [(energy[energy_max_index] - energy[first_index]) / (time_at_max_energy - times[first_index])]})
+                                    'Impulsion': [(energy[energy_max_index] - energy[first_index]) / (time_at_max_energy - times[first_index])],
+                                    'Durée du signal': [sub_times[-1] - sub_times[0]]})
     
     dataframe_event.to_csv(f'features/2_energy/dataframe_event_{event_index}_energie.csv', index=False)
