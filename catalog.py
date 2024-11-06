@@ -61,36 +61,21 @@ def open_plot(avalanches, pos_number=0.260, xlim=100):
         ax.text(value + 0.1, index - pos_number, str(value))
 
 
-def see_word_distribution(ESEC, pos_number, xlim, ylim):
-    """
-    Plots the distribution of word in the ESEC.
+def see_number_distribution_number(avalanches_select, ylabel, ylim):
+    ## Count the occurrences of each category in the 'type' column
+    category_counts = avalanches_select.value_counts()
+    category_counts.plot(kind='barh')
 
-    Parameters:
-    ------------
-    ESEC : pandas.Series
-        The ESEC.
-    pos_number : float
-        Controls the vertical position of the text labels on the bars.
-    xlim : int
-        Sets the X-axis limit of the plot.
-    """
+    plt.xlabel("Number of events")
+    plt.ylabel(ylabel)
 
-    ax = plt.subplots(figsize = (10,5))
+    ## Add text annotations to each bar
+    for index, value in enumerate(category_counts):
+        plt.text(value+70, index-0.07, str(value), va='center', ha='left')
 
-    ## Count the occurrences of each word and sort them in descending order
-    ESEC_sorted = ESEC.value_counts().sort_values(ascending=False)
-
-    ## Plot the distribution
-    ax = ESEC_sorted.plot(kind='barh')
-    ax.set_xlabel("Number of events")
-    ax.set_yticks(range(len(ESEC_sorted)))
-    ax.set_yticklabels(ESEC_sorted.index)
-    ax.set_xlim(0, xlim)
-    ax.set_ylim(0, ylim)
-
-    ## For counting the number of values in each column
-    for index, value in enumerate(ESEC_sorted):
-        ax.text(value + 0.1, index - pos_number, str(value))
+    plt.xlim(0, ylim)
+    plt.tight_layout()
+    plt.show()
 
 
 def see_number_distribution(avalanches_select, ylabel):
