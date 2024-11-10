@@ -1,7 +1,7 @@
 """
-Cleaning data in ESEC
+Cleaning data in the database
 
-This module contains functions to clean data from ESEC.
+This module contains functions to clean data from the database.
 """
 
 from tqdm.notebook import tqdm
@@ -11,23 +11,23 @@ import obspy
 tqdm.pandas()
 
 
-def events_without_pickle_file(ESEC_avalanches):
+def events_without_pickle_file(database):
     """
     Function to remove the events without pickle file.
 
     Parameters:
     ------------
-    ESEC_avalanches : pandas.DataFrame
-        The ESEC.
+    database : pandas.DataFrame
+        The database.
 
     Returns:
     ---------
-    ESEC_avalanches : pandas.DataFrame
-        The new ESEC without the events without pickle file.
+    database : pandas.DataFrame
+        The new database without the events without pickle file.
     """
 
     ## Loop over all events
-    for numero_event in tqdm(ESEC_avalanches["numero"], total=len(ESEC_avalanches)):
+    for numero_event in tqdm(database["numero"], total=len(database)):
 
         ## Check if events have pickle file
         try:
@@ -35,15 +35,11 @@ def events_without_pickle_file(ESEC_avalanches):
 
         ## If an event has not pickle file, it is removed
         except FileNotFoundError:
-            # print("No pickle file in stream " + str(numero_event))
 
-            ESEC_avalanches = ESEC_avalanches.drop(numero_event)
-
-            # print("line " + str(numero_event) + " removed")
-            # print("")
+            database = database.drop(numero_event)
 
             continue
 
-    print("In this catalog, there are now", len(ESEC_avalanches), "avalanches.")
+    print("In this catalog, there are now", len(database), "events.")
 
-    return ESEC_avalanches
+    return database

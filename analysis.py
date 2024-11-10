@@ -1,7 +1,7 @@
 """
 Analyse seismic waveforms with ObsPy.
 
-Many functions allow to filter and detect seismic signals from ESEC avalanches.
+Many functions allow to filter and detect seismic signals from the database.
 The detection method is here.
 """
 from tqdm.notebook import tqdm
@@ -260,7 +260,7 @@ def ajustement_de_segment(mask, frequencies_signal, psd_signal, ax, color='green
     return freq, slope, intercept, psd
 
 
-def plot_spectre(trace, ESEC_avalanches, trimmed_data, trace_index, event_index, conserv_result=False):
+def plot_spectre(trace, database, trimmed_data, trace_index, event_index, conserv_result=False):
     """
     Plots the power spectral density (PSD) of a seismic signal with Welch method and fits two linear models.
 
@@ -268,7 +268,7 @@ def plot_spectre(trace, ESEC_avalanches, trimmed_data, trace_index, event_index,
     ------------
     trace : obspy.Trace
         The seismic trace containing the signal data to be analyzed.
-    ESEC_avalanches : pandas.DataFrame
+    database : pandas.DataFrame
         The ESEC.
     trimmed_data : np.ndarray
         The detected signal data.
@@ -317,8 +317,8 @@ def plot_spectre(trace, ESEC_avalanches, trimmed_data, trace_index, event_index,
                 'Slope haute frequence': high_slope,
                 'Intercept haute frequence': high_intercept,
                 'Last PSD haute frequence': high_psd[-1], 
-                'numero1': ESEC_avalanches["numero"][event_index],
-                'etiquette': ESEC_avalanches["type"][event_index]
+                'numero1': database["numero"][event_index],
+                'etiquette': database["type"][event_index]
             })
         
     ## Save results in a dataframe

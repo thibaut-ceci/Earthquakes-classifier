@@ -4,7 +4,6 @@ ESEC energy calculate
 Library with several functions to calculate avalanches energy
 """
 
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from scipy.signal import spectrogram
@@ -122,41 +121,6 @@ def threshold(times, energy):
     sub_energy = energy[first_index:last_index+1]
 
     return sub_times, sub_energy, first_index, last_index, threshold_energy
-
-
-def plot(times, energy, distance, threshold_energy, sub_times, sub_energy):
-    """
-    Display the energy envelope of the trace.
-
-    Parameters:
-    ------------
-    times : np.array
-        Array of time points corresponding to the energy values.
-    energy : np.array
-        Energy values over time.
-    distance : float
-        Distance of the seismic station to the event.
-    threshold_energy : float
-        The threshold value used for detection.
-    sub_times : np.array
-        Time points within the thresholded energy range.
-    sub_energy : np.array
-        Energy values within the thresholded range.
-    """
-
-    ## Plot the full energy envelope
-    plt.plot(times, energy, label="Distance : " + str(np.round(distance)) + " km", alpha=0.7)
-
-    ## Plot the threshold
-    plt.plot([times[0], times[-1]], [threshold_energy, threshold_energy], 'g--', label="Threshold")
-
-    ## Plot the portion of the energy envelope detected by the threshold
-    plt.plot(sub_times, sub_energy, color="red")
-    
-    plt.xlabel("Time (s)")
-    plt.ylabel("Energy (dB)")
-    plt.legend(fontsize=9, bbox_to_anchor=(1.01, 1), loc='upper left')
-    plt.show()
 
 
 def compute(ESEC_avalanches, trace, event_index):
