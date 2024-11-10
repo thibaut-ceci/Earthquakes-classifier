@@ -1,2 +1,10 @@
 /__pycache__
-/sismogrammes
+sismogrammes/*
+sismogrammes_sismoavalanche/*
+features/1_spectre/*
+features/2_energy/*
+
+!sismogrammes/
+!sismogrammes_sismoavalanche/
+!features/1_spectre/
+!features/2_energy/

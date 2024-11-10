@@ -95,7 +95,7 @@ def detection_on_one_trace(trace, dataframe, event_index):
             time_raw = trace.times()
             data_raw = trace.data
             distance = trace.stats.distance
-            print("The distance of the trace is " + str(distance))
+            # print("The distance of the trace is " + str(distance))
 
             start = cp.conversion_temps(dataframe, event, trace)
 

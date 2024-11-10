@@ -12,7 +12,7 @@ This project is under development. I'm working on it !!
 09_test_the_model --> Test the model with a part of the features
 
 
-
+explique le fonctionnement
 
 
 

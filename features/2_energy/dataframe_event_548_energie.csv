@@ -1,2 +1,2 @@
-event_index,numero,distance,skewness,area_of_the_energy_parabola,energy_max,Impulsion
-548,548,442.3556109107244,0.44852698186481876,7.240143956226564e-11,1.1714463635535936e-12,1.8086699689550417e-14
+event_index,numero,distance,skewness,area_of_the_energy_parabola,energy_max,Impulsion,Durée du signal
+548,548,12.232555880116852,1.2350743170145166,1.909289294525833e-09,5.531779539678727e-11,1.5567396607769144e-12,98.0

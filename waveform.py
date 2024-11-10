@@ -4,6 +4,8 @@ Manage seismic waveforms with ObsPy.
 Write by Léonard Seydoux (seydoux@ipgp.fr) and Thibaut Céci (thi.ceci@gmail.com)
 """
 
+import os
+
 from obspy import UTCDateTime, Stream
 from obspy.clients.fdsn import Client
 from obspy.geodetics import locations2degrees
@@ -121,3 +123,13 @@ def download_stream(event, time_margins=150, print_error=False, retries=3):
                 continue  # Retry
 
     return stream
+
+
+def missing_file(dataframe, file = "sismogrammes"):
+
+    expected_files = {f"{i:03}.pickle" for i in range(len(dataframe))}
+    files_present = set(os.listdir(file))
+    missing_files = expected_files - files_present
+    missing_files = {int(filename.split('.')[0]) for filename in missing_files}
+
+    return missing_files
