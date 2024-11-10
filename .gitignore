@@ -1,5 +1,7 @@
-## Ignore all files in these directories
+## Ignore this directory
 __pycache__/
+
+## Ignore all files in these directories
 sismogrammes/*
 sismogrammes_sismoavalanche/*
 features/1_spectre/*
