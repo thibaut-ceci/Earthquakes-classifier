@@ -1,12 +1,13 @@
-/__pycache__
+## Ignore all files in these directories
+__pycache__
 sismogrammes/*
 sismogrammes_sismoavalanche/*
 features/1_spectre/*
 features/2_energy/*
+data/**/*.pickle
 
-!sismogrammes/
-!sismogrammes_sismoavalanche/
-!features/1_spectre/
-!features/2_energy/
 
-data/*.pickle
+
+
+
+
