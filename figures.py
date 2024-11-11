@@ -1,7 +1,7 @@
 """
-ESEC figures libraries.
+Database figures libraries.
 
-This module contains functions to plot data from ESEC.
+This module contains functions to plot data from database.
 """
 
 import matplotlib.pyplot as plt

@@ -4,6 +4,7 @@ Analyse seismic waveforms with ObsPy.
 Many functions allow to filter and detect seismic signals from the database.
 The detection method is here.
 """
+
 from tqdm.notebook import tqdm
 
 import matplotlib.pyplot as plt
@@ -18,18 +19,14 @@ import computations as cp
 tqdm.pandas()
 
 
-def filter_stream(ESEC_avalanches, event_index, trace_index, freq_HP=9, freq_LP=0.5, max_percentage=0.3):
+def filter_stream(event_index, freq_HP=9, freq_LP=0.5, max_percentage=0.3):
     """
     Filter a stream.
 
     Parameters
     ----------
-    ESEC_avalanches : pandas.DataFrame
-        The ESEC.
     event_index : int
         The index of the event to filter.
-    trace_index : int
-        The index of the trace to retrieve and filter.
     freq_HP : float
         The high-pass filter frequency.
     freq_LP : float
@@ -39,16 +36,11 @@ def filter_stream(ESEC_avalanches, event_index, trace_index, freq_HP=9, freq_LP=
 
     Returns
     -------
-    event : pandas.DataFrame
-        The event data corresponding to the event_index.
     stream : obspy.Stream
         The filtered seismic stream.
     trace : obspy.Trace
         The specific trace filtered from the stream.
     """
-
-    ## Retrieve the event data
-    event = ESEC_avalanches.loc[ESEC_avalanches["numero"] == event_index]
 
     ## Read and prepare the stream
     stream = obspy.read(f"sismogrammes/{event_index:03d}.pickle")
@@ -63,13 +55,32 @@ def filter_stream(ESEC_avalanches, event_index, trace_index, freq_HP=9, freq_LP=
     stream = stream.filter("bandpass", freqmin=freq_LP, freqmax=freq_HP) # Band-pass filter
     stream = stream.taper(max_percentage=max_percentage, type="hann")    # Taper
 
-    ## Select one trace
+    ## Select the first trace
     trace = stream[0]
 
     return stream, trace
 
 
 def thresholds(data_start_detection):
+    """
+    Calculate noise and signal thresholds based on the seismic signal data.
+
+    Parameters
+    ----------
+    data_start_detection : np.ndarray
+        Seismic signal data.
+
+    Returns
+    -------
+    threshold_1 : float
+        The noise threshold.
+    threshold_2 : float
+        The seismic signal threshold.
+    data_above_threshold_1 : np.ndarray
+        Boolean array indicating which data points exceed the noise threshold.
+    data_above_threshold_2 : np.ndarray
+        Boolean array indicating which data points exceed both the noise and signal thresholds.
+    """
 
     ## Calculate the RMS of the data
     data_rms = np.sqrt(np.mean(data_start_detection**2)) / 2
@@ -89,60 +100,91 @@ def thresholds(data_start_detection):
 
 
 def detection_on_one_trace(trace, dataframe, event_index):
+    """
+    Prepares a trace for detection by trimming it according to the start and end times from the catalog.
+    Returns the detected part of the trace with thresholds.
 
-    for event in dataframe["numero"]:
-        if event == event_index:
-            time_raw = trace.times()
-            data_raw = trace.data
-            distance = trace.stats.distance
-            # print("The distance of the trace is " + str(distance))
+    Parameters
+    ----------
+    trace : obspy.Trace
+        The trace to process for detection.
+    dataframe : pandas.DataFrame
+        The dataframe.
+    event_index : int
+        The index of the event in the dataframe.
 
-            start = cp.conversion_temps(dataframe, event, trace)
-
-            ## Trim the trace
-            mask = (time_raw >= start) & (time_raw <= start + 500)
-            time_start_detection = time_raw[mask]
-            data_start_detection = trace.data[mask]
-
-
-            ### Step 2 : The detection with the thresholds
-
-            ## Compute thresholds
-            lower_threshold, upper_threshold, data_above_threshold_1, data_above_threshold_2 = thresholds(data_start_detection)
-
-            try:
-                ## Compute start and end times of the trace
-                start_time = time_start_detection[data_above_threshold_1][0]
-                end_time = time_start_detection[data_above_threshold_2][-1]
-
-                ## Trim the trace
-                mask = (time_start_detection >= start_time) & (time_start_detection <= end_time)
-                trimmed_time = time_start_detection[mask]
-                trimmed_data = data_start_detection[mask]
-                
-
-                print("Detection on event", event)
-
-            except IndexError:
-                ## If detection is not possible, an error occurs.
-                print("No detection on event", event)
-                start_time = end_time = trimmed_time = trimmed_data = np.nan
-
-            ### Step 3 : Add conditions to improve the detection method
-
-            ## Compute the duration of the avalanche
-            duration = end_time - start_time
-
-            ## Add condition if the duration is too small
-            if duration < 10:
-                print(f"Event duration too short: {str(duration)} seconds. Bad detection on event {event}.")
-                start_time = end_time = trimmed_time = trimmed_data = np.nan
+    Returns
+    -------
+    time_start_detection : np.ndarray
+        Time for the detection method.
+    data_start_detection : np.ndarray
+        Data for the detection method.
+    trimmed_time : np.ndarray
+        Detected time from the seismic signal.
+    trimmed_data : np.ndarray
+        Detected data from the seismic signal.
+    time_raw : np.ndarray
+        Original time of the trace.
+    data_raw : np.ndarray
+        Original data of the trace.
+    upper_threshold : float
+        Seismic signal threshold for detection.
+    lower_threshold : float
+        Noise threshold for detection.
+    """
 
 
-            ## Add condition if the noise threshold is upper the seismic signal threshold
-            if lower_threshold > upper_threshold:
-                print(f"Noise threshold too high - no detection on event {event}.")
-                trimmed_time = trimmed_data = upper_threshold = lower_threshold = start_time = end_time = np.nan
+    ### Step 1 : Trim the trace using the database start and end times to define the detection area
+
+    ## Extract information from the trace
+    time_raw = trace.times()
+    data_raw = trace.data
+
+    start = cp.conversion_temps(dataframe, event_index, trace)
+
+    ## Trim the trace
+    mask = (time_raw >= start) & (time_raw <= start + 500)
+    time_start_detection = time_raw[mask]
+    data_start_detection = trace.data[mask]
+
+
+    ### Step 2 : The detection with the thresholds
+
+    ## Compute thresholds
+    lower_threshold, upper_threshold, data_above_threshold_1, data_above_threshold_2 = thresholds(data_start_detection)
+
+    try:
+        ## Compute start and end times of the trace
+        start_time = time_start_detection[data_above_threshold_1][0]
+        end_time = time_start_detection[data_above_threshold_2][-1]
+
+        ## Trim the trace
+        mask = (time_start_detection >= start_time) & (time_start_detection <= end_time)
+        trimmed_time = time_start_detection[mask]
+        trimmed_data = data_start_detection[mask]
+        
+        print("Detection on event", event_index)
+
+    except IndexError:
+        ## If detection is not possible, an error occurs.
+        print("No detection on event", event_index)
+        start_time = end_time = trimmed_time = trimmed_data = np.nan
+
+
+    ### Step 3 : Add conditions to improve the detection method
+
+    ## Compute the duration of the avalanche
+    duration = end_time - start_time
+
+    ## Add condition if the duration is too small
+    if duration < 10:
+        print(f"Event duration too short: {str(duration)} seconds. Bad detection on event {event_index}.")
+        start_time = end_time = trimmed_time = trimmed_data = np.nan
+
+    ## Add condition if the noise threshold is upper the seismic signal threshold
+    if lower_threshold > upper_threshold:
+        print(f"Noise threshold too high - no detection on event {event_index}.")
+        trimmed_time = trimmed_data = upper_threshold = lower_threshold = start_time = end_time = np.nan
 
     return time_start_detection, data_start_detection, trimmed_time, trimmed_data, time_raw, data_raw, upper_threshold, lower_threshold
 
@@ -208,7 +250,7 @@ def find_split_frequency(frequencies, values, min_freq=2.0, max_freq=10.0):
     return filtered_frequencies[split_index + 1] if split_index < len(filtered_frequencies) - 1 else filtered_frequencies[-1]
 
 
-def ajustement_de_segment(mask, frequencies_signal, psd_signal, ax, color='green', label="Ajustement bas", pltplot = True):
+def ajustement_de_segment(mask, frequencies_signal, psd_signal):
     """
     Fits a linear model to a segment of the PSD data and plots the result.
 
@@ -220,14 +262,6 @@ def ajustement_de_segment(mask, frequencies_signal, psd_signal, ax, color='green
         The full array of frequency values.
     psd_signal : np.ndarray
         The full array of PSD values corresponding to the frequencies.
-    ax : matplotlib axis
-        The axis object on which to plot the adjusted line.
-    color : str
-        The color of the fitted line.
-    label : str
-        The label for the fitted line.
-    pltplot : bool
-        If True, uses plt to plot directly, otherwise uses the provided axis.
 
     Returns:
     ---------
@@ -251,16 +285,10 @@ def ajustement_de_segment(mask, frequencies_signal, psd_signal, ax, color='green
         ## Fit the model
         slope, intercept = fit_line(np.log(freq), np.log(psd))
 
-        ## Plot the result
-        # if pltplot == True:
-        #     plt.loglog(freq, np.exp(slope * np.log(freq) + intercept), color=color, label=label)
-        # else:
-        #     ax.loglog(freq, np.exp(slope * np.log(freq) + intercept), color=color, label=label)
-
     return freq, slope, intercept, psd
 
 
-def plot_spectre(trace, database, trimmed_data, trace_index, event_index, conserv_result=False):
+def plot_spectre(trace, database, trimmed_data, event_index, conserv_result=False):
     """
     Plots the power spectral density (PSD) of a seismic signal with Welch method and fits two linear models.
 
@@ -269,11 +297,9 @@ def plot_spectre(trace, database, trimmed_data, trace_index, event_index, conser
     trace : obspy.Trace
         The seismic trace containing the signal data to be analyzed.
     database : pandas.DataFrame
-        The ESEC.
+        The databse.
     trimmed_data : np.ndarray
         The detected signal data.
-    trace_index : int
-        Index of the seismic trace.
     event_index : int
         Index of the avalanche event.
     conserv_result : bool
@@ -302,8 +328,8 @@ def plot_spectre(trace, database, trimmed_data, trace_index, event_index, conser
     high_mask = frequencies_signal > split_freq
 
     ## Adjusting two models
-    _, low_slope, low_intercept, low_psd = ajustement_de_segment(low_mask, frequencies_signal, psd_signal, plt, color='green', label="Modèle bas", pltplot = False)
-    _, high_slope, high_intercept, high_psd = ajustement_de_segment(high_mask, frequencies_signal, psd_signal, plt, color='blue', label="Modèle haut", pltplot = False)
+    _, low_slope, low_intercept, low_psd = ajustement_de_segment(low_mask, frequencies_signal, psd_signal)
+    _, high_slope, high_intercept, high_psd = ajustement_de_segment(high_mask, frequencies_signal, psd_signal)
 
     ## Store results
     if conserv_result == True:
@@ -325,14 +351,3 @@ def plot_spectre(trace, database, trimmed_data, trace_index, event_index, conser
     if conserv_result == True:
         df = pd.DataFrame(curve_params)
         df.to_csv(f'features/1_spectre/curve_parameters_{event_index}_spectre.csv', index=False)
-        
-    # plt.loglog(frequencies_signal, psd_signal, color="C1", label="Spectrum of the detected seismic signal")
-    # plt.legend()
-    # plt.margins(x=0)
-    # plt.xscale("log")
-    # plt.xlabel('Fréquences (Hz)')
-    # plt.ylabel(r'Power Spectral Density of Displacement($\mathrm{\frac{m^{2}}{Hz}}$)')
-
-    # figures.save(f"fitting_on_trace_{trace_index}_in_event_{event_index}.pdf")
-
-    # plt.show()

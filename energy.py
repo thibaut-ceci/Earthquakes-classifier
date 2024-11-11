@@ -1,7 +1,7 @@
 """
-ESEC energy calculate
+Database energy calculate
 
-Library with several functions to calculate avalanches energy
+Library with several functions to calculate energy of seismic signals
 """
 
 import numpy as np
@@ -123,14 +123,14 @@ def threshold(times, energy):
     return sub_times, sub_energy, first_index, last_index, threshold_energy
 
 
-def compute(ESEC_avalanches, trace, event_index):
+def compute(database, trace, event_index):
     """
     Compute energy features of the first seismic trace for each event and save the results in a dataframe.
 
     Parameters:
     ------------
-    ESEC_avalanches : pandas.DataFrame
-        The ESEC.
+    database : pandas.DataFrame
+        The database.
     trace : obspy.Stream
         Seismic first trace for the event.
     event_index : int
@@ -141,19 +141,16 @@ def compute(ESEC_avalanches, trace, event_index):
     distance, times, energy, time_at_max_energy, energy_max_index = spectres(trace)
 
     ## Apply a threshold to detect the energy envelope
-    sub_times, sub_energy, first_index, _, threshold_energy = threshold(times, energy)
-
-    ## Plot the energy envelope
-    # plot(times, energy, distance, threshold_energy, sub_times, sub_energy)
+    sub_times, sub_energy, first_index, _, _ = threshold(times, energy)
 
     ## Extract and save features
     dataframe_event = pd.DataFrame({'event_index': [event_index], 
-                                    'numero': [ESEC_avalanches["numero"][event_index]],
+                                    'numero': [database["numero"][event_index]],
                                     'distance': [distance], 
                                     'skewness': [scipy.stats.skew(sub_energy)], 
                                     'area_of_the_energy_parabola': [np.trapz(sub_energy, sub_times)], 
                                     'energy_max': [np.max(sub_energy)], 
                                     'Impulsion': [(energy[energy_max_index] - energy[first_index]) / (time_at_max_energy - times[first_index])],
-                                    'Durée du signal': [sub_times[-1] - sub_times[0]]})
+                                    'Signal duration': [sub_times[-1] - sub_times[0]]})
     
     dataframe_event.to_csv(f'features/2_energy/dataframe_event_{event_index}_energie.csv', index=False)

@@ -1,7 +1,5 @@
 """
 Manage seismic waveforms with ObsPy.
-
-Write by Léonard Seydoux (seydoux@ipgp.fr) and Thibaut Céci (thi.ceci@gmail.com)
 """
 
 import os
@@ -32,6 +30,8 @@ def download_inventory(event, maxradius=1.0, retries=10):
     --------
     Inventory
         Inventory object if successful
+
+    Write by Léonard Seydoux (seydoux@ipgp.fr) and Thibaut Céci (thi.ceci@gmail.com)
     """
     
     ## Start time and end time of the event
@@ -76,6 +76,8 @@ def download_stream(event, time_margins=150, print_error=False, retries=3):
     -------
     stream : obspy.Stream
         A stream of waveforms for the event from the nearest station.
+
+    Write by Léonard Seydoux (seydoux@ipgp.fr) and Thibaut Céci (thi.ceci@gmail.com)
     """
 
     ## Start time and end time of the event
@@ -112,24 +114,46 @@ def download_stream(event, time_margins=150, print_error=False, retries=3):
                 traces.merge(method=1, fill_value="interpolate")
 
                 for trace in traces:
-                    trace.stats.distance = min_distance * 111.19  # Convert degrees to km
+                    trace.stats.distance = min_distance * 111.19  ## Convert degrees to km
 
                 stream += traces
-                break  # Break the retry loop if successful
+                break  ## Break the loop if successful
 
             except Exception as e:
                 if print_error:
                     print(f"Error with station {station_code}. Attempt {attempt + 1} of {retries}. Error: {e}")
-                continue  # Retry
+                continue  ## Retry
 
     return stream
 
 
-def missing_file(dataframe, file = "sismogrammes"):
+def missing_file(database, file = "sismogrammes"):
+    """
+    Identifies missing files in a directory by comparing expected file names
 
-    expected_files = {f"{i:03}.pickle" for i in range(len(dataframe))}
+    Parameters
+    ----------
+    database : pandas.DataFrame
+        The database whose length determines the number of expected files.
+    file : str
+        The directory path containing the files to check.
+
+    Returns
+    -------
+    missing_files : set of int
+        A set of integers representing the indices of missing files. 
+    """
+
+    ## Create a set of expected file names based on the database length
+    expected_files = {f"{i:03}.pickle" for i in range(len(database))}
+
+    ## List all files in the specified directory
     files_present = set(os.listdir(file))
+
+    ## Identify missing files by finding the difference
     missing_files = expected_files - files_present
+
+    ## Convert missing file names to integers for easy identification
     missing_files = {int(filename.split('.')[0]) for filename in missing_files}
 
     return missing_files

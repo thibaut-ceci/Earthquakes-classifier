@@ -1,5 +1,5 @@
 """
-ESEC computation libraries.
+Database computation libraries.
 
 This library contains various functions to perform calculations.
 """
@@ -11,15 +11,35 @@ import datetime as dt
 import glob
 import os
 import pandas as pd
-from scipy.stats import t
 
 tqdm.pandas()
 
 
-def conversion_temps(dataframe, event_indexX, trace):
-    date_string = dataframe.loc[dataframe["numero"] == event_indexX, "time"].values[0]
+def conversion_temps(database, event_index, trace):
+    """
+    Converts a timestamp from the database to a time offset in seconds from the start of the seismic trace.
+
+    Parameters
+    ----------
+    database : pandas.DataFrame
+        A DataFrame containing event information, including a 'time' column with timestamps.
+    event_index : int
+        The unique identifier for the event to be located in the 'numero' column of the database.
+    trace : obspy.Trace
+        The ObsPy Trace object containing seismic data and metadata, including trace start time.
+    
+    Returns
+    -------
+    start : float
+        The time offset in seconds from the trace start time to the event start time.
+    """
+
+    ## Extract the event timestamp from the database and convert it to a datetime object
+    date_string = database.loc[database["numero"] == event_index, "time"].values[0]
     date_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%S.%fZ')
     start_time = dt.datetime.strptime(str(date_object), '%Y-%m-%d %H:%M:%S.%f')
+
+    ## Calculate the offset in seconds from the trace start time
     start = (start_time - trace.stats.starttime.datetime).total_seconds()
 
     return start
