@@ -17,16 +17,16 @@ The data comes from USGS : https://earthquake.usgs.gov/earthquakes/search/
 - 08_train_the_model --> Train and test the model with the features
 - 09_test_the_model --> Test the model with the features from the SismoAvalanche project
 
-# A lot of librairies developped in this studies were availables :
+# Many libraries developped in this study were available :
 - analysis.py : Analyses seismic waveforms with ObsPy. The detection method is here.
 - catalog.py : Database catalog management.
-- computations.py : Database catalog computation librairies.
+- computations.py : Database catalog computation libraries.
 - energy.py : Performs energy calculations.
 - figures.py : Manages the creation of figures.
 - waveform.py : Downloads the seismic data.
 
 # Explanation of the files :
-- \data : Contains the many catalogs created during this study and the machine learning model
-- \features : Contains the features calculated during this study and the SismoAvalanche features
-- \figures : Contains the plots obtained during this study
-- \sismogrammes : Contains the seismic signals from each events
+- \data : Contains the many catalogs created during this study and the machine learning model.
+- \features : Contains the features calculated during this study and the SismoAvalanche features.
+- \figures : Contains the plots obtained during this study.
+- \sismogrammes : Contains the seismic signals from each event.
